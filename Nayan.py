@@ -161,4 +161,12 @@ driver.get("https://www.google.com")
 print(driver.title)# লেখা উঠবে google কারণ html এ লেখা আছে <tittle>goolgle</tittle>
 
 driver.quit()
+#excepted conditions হলো এমন একটি selenium এর টুলবক্স যেখানে বলে দেয় কোন একটা জিনিস লোড হওয়া পর্যন্ত অপেক্ষা করুন। 
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+# অপেক্ষা করো যতক্ষণ না 'submit' বাটনটা উপস্থিত হয়
+element = WebDriverWait(driver, 10).until(
+    EC.presence_of_element_located((By.ID, "submit"))
+) #এখানে EC.presence_of_element_located() হলো একটি expected condition.এটা Selenium কে বলে:> "ভাই, ১০ সেকেন্ড পর্যন্ত চেক করে দেখো ওই ID ওয়ালা বাটনটা আসছে কিনা, তারপর proceed করো।"
 
