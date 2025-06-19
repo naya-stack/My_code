@@ -89,3 +89,37 @@ while True:#চালিয়ে যাও যতক্ষণ পর্যন্�
     except NoSuchElementException: # এটা selenium এর  builtin exception error type মানে যে element টি খুজছিলাম সেটি যদি না পাওয়া যায় তাহলে error না দিয়ে শান্তভাবে break দিয়ে loop বন্ধ করে 
         print("No more pages.")
         break
+  #scroll height টা একচু দেখি 
+driver. get (যে page এ scrollheight load হয় সেখানের url নিব html পর্যন্ত)
+height=driver. execute_script('return document.body.scrollHeight)
+print(height)
+for i in range(0,height+1200,30)
+   driver.execute_script(f"window.scrollTo(0,{i})")
+   time.sleep(10)
+comment =driver. dind_elements(By.Class_name, 'content')
+comment_list=[ ]
+for i in comment 
+  comment_list.appand(i)
+print(comment_list)
+# send keys দিয়ে কাজ করা 
+from selenium.webdriver.common.keys import Keys
+driver.get(www.google.com) 
+google_input=driver.find_elements(By.NAME,'q') 
+google_input.send_keys("laptop shop near mirpur")
+google_input.send_keys("Keys.RETURN)
+# recapcha handle করা -- recapcha checkbox এ যেকোন জায়গায় ক্লিক করলেই checkbox এ rightclickহয়ে যায় এই পুরোটা checkbox সহ পুরো box টা একটা particular class_name =g_recapcha এর under এ থাকে  তখন সেটাকে খজে পেতে হলে inspect করে search করতে হয় এখন এটা কিন্তু একটক div উপর ক্লিক করছি কারণ input tag link tag ackchor tag এর ভিতরে ওই recaptcha checkbox নাই তাই actionvhaims use করতে হবে 
+
+from selenium.webdriver. chrome. options import Options
+chrome_options=Options() 
+chrome_options.add-argumment("--disable-blink-features=AutomationControlled")
+chrome_options.add-arguments("user-agent=Mozilla/5.0(Windows NT 10.0; win64;x64)")
+driver=webdriver.Chrome(options=chrome_options)
+driver.get(https://www.google.com)
+#এখন এটা দেই আর উপরের send_keys দিয়ে কাজ ও তারপরে করি 
+recaptcha_checkbox=driver.find_element(By.CLASS_NAME, 'g_recaptcha) 
+from selenium.webdriver. common. action_chains import ActionChains
+action=ActionChains(driver)
+action.move_to_element(recaptcha_checkbox).click(). perform()
+
+driver.maximize_window() 
+
