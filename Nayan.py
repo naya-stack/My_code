@@ -169,4 +169,58 @@ from selenium.webdriver.common.by import By
 element = WebDriverWait(driver, 10).until(
     EC.presence_of_element_located((By.ID, "submit"))
 ) #এখানে EC.presence_of_element_located() হলো একটি expected condition.এটা Selenium কে বলে:> "ভাই, ১০ সেকেন্ড পর্যন্ত চেক করে দেখো ওই ID ওয়ালা বাটনটা আসছে কিনা, তারপর proceed করো।"
+#daraz এর ওই list এর 42 নম্বর পন্যটা স্ক্রল করে এনে দেন 
+product = driver.find_element(By.XPATH, "//div[@class='product'][42]") #এই 42 টা নিজে দিতে হবে 
+
+driver.execute_script("arguments[0].scrollIntoView();", product)
+print("Product visible now!") #এখন চাচ্ছি যে loop চালাব তাই পরের কোডটা হলো 
+products = driver.find_elements(By.XPATH, "//div[@class='product']")
+
+for product in products:
+    driver.execute_script("arguments[0].scrollIntoView();", product)
+    print(product.text)
+#এরকমই একটা কোড interesting
+for product in products:
+    driver.execute_script("arguments[0].scrollIntoView();", product)
+    time.sleep(1)
+    
+    try:
+        title = product.find_element(By.CLASS_NAME, "title-class").text
+        price = product.find_element(By.CLASS_NAME, "price-class").text
+        print(f"{title} → {price}")
+    except:
+        print("Error reading product")
+
+#এটা just java script এর argument নিবে আর প্রিন্ট করবে 
+driver.execute_script(
+    "console.log(arguments[0], arguments[1], arguments[2]);",
+    "🍎", "🍌", "🍇"
+)
+#দুইটা different scrolltop এর example নিজে থেকেই বুঝবে 
+driver.execute_script(
+    "arguments[0].scrollTop = arguments[0].scrollHeight;",
+    box
+)
+#দুইটা javascript এর argument pass করলাম এবং আমি mention করে দিচ্ছি যে কতটুক পর্য্ত করবে 
+driver.execute_script(
+    "arguments[0].scrollTop = arguments[0].scrollHeight;",
+    box
+)
+#আরেকটু broad ভাবো 
+div1 = driver.find_element(By.ID, "box1")
+div2 = driver.find_element(By.ID, "box2")
+
+driver.execute_script(
+    "arguments[0].scrollTop = arguments[1]; arguments[2].scrollTop = arguments[3];",
+    div1, 300,
+    div2, 500
+)
+# আচ্ছা এটা কিন্তু আবতর একটু remind করিয়ে দিচ্ছি এই argument এর কিন্তু power আছে নিজেরই scrollhight difine করার
+
+box = driver.find_element(By.XPATH, '//div[@class="scrollable-div"]')
+
+driver.execute_script(
+    "arguments[0].scrollTop = arguments[0].scrollHeight;",
+    box
+)
 
