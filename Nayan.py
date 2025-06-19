@@ -122,4 +122,43 @@ action=ActionChains(driver)
 action.move_to_element(recaptcha_checkbox).click(). perform()
 
 driver.maximize_window() 
+# headless mode এ data collect করতে াি করা লাগে 
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+
+# Chrome options
+options = Options()
+options.add_argument("--headless")
+options.add_argument("--window-size=1920,1080")
+
+# Start browser
+driver = webdriver.Chrome(options=options)
+
+# Open a page
+driver.get("https://www.google.com")
+
+# Take screenshot
+driver.save_screenshot("google_homepage.png")  #  এটা PNG ফাইল বানিয়ে দিবে আমার excepted folder এ 
+
+# Close browser
+driver.quit()
+#গুরুত্বপূর্ণ কিছু features 
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+
+# Step 1: Chrome Options তৈরি করুন
+chrome_options = Options()
+
+# Step 2: আপনি যা যোগ করতে চান:
+chrome_options.add_argument("--disable-cache")   # ক্যাশ বন্ধ রাখে
+chrome_options.add_argument("--incognito")       # ইনকগনিটো মোডে চালায়
+chrome_options.add_argument("--headless")        # 👉 Headless মোড চালু করার জন্য এটা যোগ করুন
+chrome_options.add_argument("--window-size=1920,1080")  # Headless হলে স্ক্রিন সাইজ দিতে হয়
+
+# Step 3: WebDriver তৈরি করুন
+driver = webdriver.Chrome(options=chrome_options)
+driver.get("https://www.google.com")
+print(driver.title)# লেখা উঠবে google কারণ html এ লেখা আছে <tittle>goolgle</tittle>
+
+driver.quit()
 
