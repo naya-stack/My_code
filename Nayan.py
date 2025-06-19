@@ -101,6 +101,22 @@ comment_list=[ ]
 for i in comment 
   comment_list.appand(i)
 print(comment_list)
+# উপরের same code টাই আবার দেখি
+# scroll loop শুরু
+for i in range(0, height + 1200, 30):
+    driver.execute_script(f"window.scrollTo(0, {i})")
+    time.sleep(1)  # ⬅️ এগুলো scroll loop-এর ভিতরে
+
+# scroll শেষ → নতুন ব্লক: comment নেওয়া শুরু
+comments = driver.find_elements(By.CLASS_NAME, 'content')
+comment_list = []
+
+# comment list-এ যোগ করার loop
+for c in comments:
+    comment_list.append(c.text)  # ⬅️ এটা এই loop-এর ভিতরে
+
+# সব comment print করা (সবচেয়ে বাইরের লেভেলে)
+print(comment_list)
 # send keys দিয়ে কাজ করা 
 from selenium.webdriver.common.keys import Keys
 driver.get(www.google.com) 
