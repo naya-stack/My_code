@@ -239,4 +239,20 @@ driver.execute_script(
     "arguments[0].scrollTop = arguments[0].scrollHeight;",
     box
 )
+# এবার click নিয়ে কাজ করব 
+product = driver.find_element(By.XPATH, "//div[@class='product'][42]")
+
+# স্ক্রল করে আনবে
+driver.execute_script("arguments[0].scrollIntoView();", product)
+time.sleep(1)
+
+# Click করতে চাইলে
+product.click()
+
+# অথবা Title ও Price নিতে চাইলে:
+title = product.find_element(By.CLASS_NAME, "title").text
+price = product.find_element(By.CLASS_NAME, "price").text
+
+print("Title:", title)
+print("Price:", price)
 
