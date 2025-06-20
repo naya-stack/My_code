@@ -9,36 +9,27 @@ driver = webdriver.Chrome(options=chrome_options)
 driver.get("https://www.facebook.com/photo/?fbid=719266390857644&set=a.106510685466554")
 time.sleep(5)
 
-
-for _ in range(10):
-    driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-    time.sleep(3)
-
-# STEP 5: Extract comment/reply authors & texts
+height=driver. execute_script('return document.body.scrollHeight)
+print(height)
+for i in range(0,height+834,28)
+   driver.execute_script(f"window.scrollTo(0,{i})")
+   time.sleep(10)
 names = driver.find_elements(By.CSS_SELECTOR, 'span[class*="x1lliihq"]')
 comments = driver.find_elements(By.CSS_SELECTOR, 'div[dir="auto"][style="text-align: start;"]')
 
-structured = []
-
+list = []
 for name, comment in zip(names, comments):
     try:
         person = name.text.strip()
         text = comment.text.strip()
         if person and text:  # Avoid empty values
-            structured.append({
+            list.append({
                 'name': person,
                 'comment': text
             })
-            print(f"🗣️ {person} → {text}")
+            print(f"{person} → {text}")
     except Exception as e:
-        print("❌ Error extracting comment:", e)
+        print(" Error extracting comment:", e)
         continue
-
-# STEP 6: Print summary
-print(f"\n✅ Total Comments + Replies Collected: {len(structured)}")
-
-# STEP 7: (Optional) Save to JSON file
-with open("facebook_comments.json", "w", encoding='utf-8') as f:
-    json.dump(structured, f, ensure_ascii=False, indent=2)
-
+print(f"\n Total Comments + Replies Collected: {len(structured)}")
 driver.quit()
