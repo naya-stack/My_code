@@ -11,7 +11,7 @@ time.sleep(5)
 
 height=driver. execute_script('return document.body.scrollHeight)
 print(height)
-for i in range(0,height+834,28)
+for i in range(0,height+834,28):
    driver.execute_script(f"window.scrollTo(0,{i})")
    time.sleep(10)
 names = driver.find_elements(By.CSS_SELECTOR, 'span[class*="x1lliihq"]')
@@ -31,5 +31,7 @@ for name, comment in zip(names, comments):
     except Exception as e:
         print(" Error extracting comment:", e)
         continue
-print(f"\n Total Comments + Replies Collected: {len(structured)}")
+print(f"\n Total Comments + Replies Collected: {len(list)}")
+ptint(list) 
+
 driver.quit()
