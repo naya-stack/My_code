@@ -256,3 +256,14 @@ price = product.find_element(By.CLASS_NAME, "price").text
 print("Title:", title)
 print("Price:", price)
 
+# treadpool এর use 
+from concurrent.futures import treadPoolExecutor 
+import treading
+link_list=[কমা দিয়ে দিয়ে লেখব url গুলো]
+define scrape_func(link):
+  driver=webdriver.Chrome() 
+  driver.get(link)
+  print(f" {treading.current_tread().name} scraped")
+with TreadPoolExecutor(max_workers=2) as executor
+   execute=[executor.submit{scrape_func,link} for link in link_list]
+
