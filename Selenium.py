@@ -36,9 +36,9 @@ for i in range(3, 201, 2):
         j = str(i)
         shop = driver.find_element(By.XPATH, base_xpath.format(j))
         driver.execute_script("arguments[0].scrollIntoView();", shop)
-        time.sleep(1)
+        time.sleep(10)
         shop.click()
-        time.sleep(3)
+        time.sleep(30)
 
         name = driver.find_element(By.CLASS_NAME, 'DUwDvf').text
 
