@@ -9,14 +9,12 @@ driver = webdriver.Chrome(options=chrome_options)
 driver.get("https://www.facebook.com/photo/?fbid=719266390857644&set=a.106510685466554")
 time.sleep(5)
 
-height=driver. execute_script('return document.body.scrollHeight)
-print(height)
-for i in range(10):
-   driver.execute_script(f"window.scrollTo(0,{i})")
-   time.sleep(10)
+scrollbox = driver.find_element(By.XPATH, '//*[@id="mount_0_0_i5"]/div/div[1]/div/div[3]/div/div/div[1]/div[1]/div/div[2]/div/div/div/div[2]')
+for _ in range(15):
+    driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", scrollbox)
+    time.sleep(20)
 names = driver.find_elements(By.CSS_SELECTOR, 'span[class*="x1lliihq"]')
 comments = driver.find_elements(By.CSS_SELECTOR, 'div[dir="auto"][style="text-align: start;"]')
-
 list = []
 for name, comment in zip(names, comments):
     try:
