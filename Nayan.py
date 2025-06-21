@@ -299,9 +299,9 @@ def estimate_max_selenium_workers_dynamic() :
   print(f"Logical cores: {logical_cores}")
   print(f"Available Ram: {ram_gb:. 2f}.GB")
 #ওই virtual memory দিয়ে আমরা maximum workers count করব 
- max_workers_uses_by_ram=ram_gb*1024)/memory_uses_by_the_selenium_browser_process
- max_workers_uses_by_CPU= logical_workers*1.5# মানে প্রতিটা core এ একটা করে workers বা thread run হয়।
- recommended_to_save_max_workers_or_thread=int(min(max_workers_uses_by_ram, max_workers_uses_by_CPU))
- print(f"Estimated max selenium workers:{recommended}")#তাহলেই এসে যকবে একটা px বা GPU তে মোট কতটা thread runকরা ঙাবে  
- return recommended
+  max_workers_uses_by_ram=ram_gb*1024)/memory_uses_by_the_selenium_browser_process
+  max_workers_uses_by_CPU= logical_workers*1.5# মানে প্রতিটা core এ একটা করে workers বা thread run হয়।
+  recommended_to_save_max_workers_or_thread=int(min(max_workers_uses_by_ram, max_workers_uses_by_CPU))
+  print(f"Estimated max selenium workers:{recommended}")#তাহলেই এসে যকবে একটা px বা GPU তে মোট কতটা thread runকরা ঙাবে  
+  return recommended
 estimate_max_selenium_workers_dynamic() 
