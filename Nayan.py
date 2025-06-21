@@ -287,4 +287,7 @@ def measure_selenium_memory() :
   convert_memory_consume=memory_consume/(1024**2)
   driver.quit() 
   return convert_memory_consume
+
+memory uses by the selenium browser process=measure_selenium_memory() 
+print(memory uses by the selenium browser process)
   
