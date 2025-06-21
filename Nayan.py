@@ -273,11 +273,14 @@ from selenium import webdriver
 import time
 #এখন selenium instance এর memoryকত খাইছে সেটা দেখি 
 def measure_selenium_memory() :
+  #launch selenium browser 
+  driver=webdriver.chrome
+  time.sleep() 
   #get the process id 
   process_id= driver.service.process.pid
   #get the memory usage of main driver process মানে এখন process_id টা দিয়ে কতটুকু memory খাইল সেটা দেখাব
   consume_process= psutil.Process(process_id)
-  memory_consume= consume_process.memory_info(). rss #rss property টা দিয়েই মুলত perent memory িা process id টা  কত memory খাইল সেটা আনলাম
+  memory_consume= consume_process.memory_info(). rss #rss (resident set size মানে কোন process এর under এ কতটুকু ram খেল সোটা বুঝায়) টা দিয়েই মুলত perent memory িা process id টা  কত memory খাইল সেটা আনলাম
   for child in consume_process. children(recursive_True)#children memory মানে reload rendering হওয়ার সময় application টা বা procewsটা কতটুক নিল সেটা আনলাম 
      memory_consume+=child.memory_info().rss
   # convert to mb
