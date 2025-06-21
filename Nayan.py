@@ -266,4 +266,8 @@ define scrape_func(link):
   print(f" {treading.current_tread().name} scraped")
 with TreadPoolExecutor(max_workers=2) as executor
    execute=[executor.submit{scrape_func,link} for link in link_list]
-
+#system design
+import multiprocessing #system এর CPU core count করব মানে physical core আর এর under এ৷logical core কতটা এটা জানার জন্য একটা library
+import psutil #প্রত্যেকটা process এর under এ process id genarate হয় ওই যে process টুকু কতটুকু জায়গা নিচ্ছে মানে process এর id টা তো ram এ থাকবে process চৱাকালীন আর Processbটা controlled বা logicall সি কাজ হবে তো CPU তে তাই memory ও CPU uses পা জানতে হবে। 
+from selenium import webdriver
+import time
