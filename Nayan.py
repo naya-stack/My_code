@@ -618,4 +618,22 @@ Facebook anti-bot risk	⚠️	Long-term run এ হতে পারে
 
 
 ✍️ আপনার হুকুম দিন, আমি কোড বানিয়ে দেই! 😄
+#multiple checkbox 
+from selenium import webdriver
+
+driver webdriver.Chrome(executable path="E:\\DOWNLOADS\\chromedriver.exe")
+
+driver.get("https://www.rahulshettyacademy.com/AutomationPractice/")
+
+checkboxes driver.find elements_by_xpath("//input[@type="checkbox"]")
+
+for checkbox in checkboxes:
+
+if checkbox ==checkboxes [1]:
+
+pass
+
+else:
+
+checkbox.click
 
