@@ -665,4 +665,31 @@ static_dropdown.select_by_index(2)
 time.sleep(2)
 
 static_dropdown.select_by_value("option1")
+  #dynamic dropdown
+ Gimport time
+
+from selenium import webdriver
+
+Efrom selenium.webdriver.support.select import Select
+
+selenium tutorial-1st code.py
+
+1st code
+
+driver webdriver.Chrome(executable_path="E:\\DOWNLOADS\\chromedriver.exe")
+
+driver.get("https://www.cleartrip.com/do/search/flights")
+
+driver.find_element_by_name("from").send_keys("del")
+
+time.sleep(2)
+
+from_airport = driver.find_elements_by_xpath("//ul.[@id='ui-id-1']/th/div")
+
+for airport in from_airport:
+
+if airport.text == "Adelaide, AU Adelaide (ADL)":
+else:
+  pass                                                   
+                                                    
 
