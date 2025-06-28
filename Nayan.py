@@ -636,4 +636,33 @@ pass
 else:
 
 checkbox.click
+ #static dropdown 
+Cimport time
+
+1st code
+
+A1
+
+12
+
+13
+
+from selenium import webdriver
+
+from selenium.webdriver.support.select import Select
+
+driver webdriver.Chrome(executable path="E:\\DOWNLOADS\\chromedriver.exe")
+
+driver.get("https://www.rahulshettyacademy.com/AutomationPractice/")
+
+static_dropdown Select(driver.find_element_by_xpath("//select[@id='dropdown-class-example"]"))
+
+static_dropdown.select_by_visible_text("Option3")
+
+time.sleep(2)
+static_dropdown.select_by_index(2)
+
+time.sleep(2)
+
+static_dropdown.select_by_value("option1")
 
