@@ -689,7 +689,27 @@ from_airport = driver.find_elements_by_xpath("//ul.[@id='ui-id-1']/th/div")
 for airport in from_airport:
 
 if airport.text == "Adelaide, AU Adelaide (ADL)":
+  airport.click() 
 else:
   pass                                                   
-                                                    
+# popup আসলে?????
+Ginport time
+
+from selenium import webdriver
+
+driver webdriver.Chrome(executable_path="E:\\DOWNLOADS\\chromedriver.exe")
+
+driver.get("https://www.rahulshettyacademy.com/AutomationPractice/"
+
+driver.find_element_by_xpath("//input[@id='name']").send_keys("anshul")
+
+driver.find_element_by_xpath("//input[@id='alertbtn")").click()
+
+popup driver.switch_to_alert()
+
+time.sleep(2)
+
+assert "ansh in popup.text
+
+popup.accept()
 
