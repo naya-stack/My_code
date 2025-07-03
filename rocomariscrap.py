@@ -9,7 +9,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import WebDriverException, NoSuchElementException
+from selenium.common.exceptions import WebDriverException, NoSuchElementExceptiom
 from concurrent.futures import ThreadPoolExecutor
 
 # ========= CONFIGURATION ========= #
@@ -93,7 +93,7 @@ def extract_author_page(author_meta):
 
         driver_thread.quit()
     except WebDriverException as e:
-        print(f"❌ Proxy Failed: {author_meta['profile_link']} - {e}")
+        print(f" Proxy Failed: {author_meta['profile_link']} - {e}")
 
 # ========= MAIN FUNCTION ========= #
 def main():
@@ -123,6 +123,9 @@ def main():
             profile_link = a.find_element(By.XPATH, ".//h4[@class='author-name']/a").get_attribute('href')
             followers = a.find_element(By.XPATH, ".//p[@class='followers']/span").text
             img = a.find_element(By.XPATH, ".//img").get_attribute('src')
+            responce=requests.get(img)
+            with open('authors_image', 'wb')as f 
+             f.write(responce.content)
 
             author_list.append({
                 'author_name': author_name,
@@ -138,4 +141,4 @@ def main():
         executor.map(extract_author_page, author_list)
 
     df.to_excel(OUTPUT_EXCEL, index=False)
-    print("✅ Done scraping all authors' books!")
+    print(" Done scraping all authors' books!")
